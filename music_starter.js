@@ -1,10 +1,18 @@
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
+
+// THIS IS WHERE YOU CAN CREATE ADD ANYTHING TO MAKE THE MUSIC VISUALISER. YOU CAN OMMIT THIS OUT AND START NEW AND FRESH
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(20)
   textFont('Helvetica'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
+
+ ellipse(width/3, height/2, 50 + bass, 50 + bass)
+ ellipse(width/3*2, height/2, 50 + bass, 50 + bass)
+
+ rect(width/2, height/2+150, 200+vocal, 50+vocal) // ADDING THE DIFFERENT ORANGE WORDS MAKES THINGS ANIMATE BASED ON THE LETTERING
+
 
    let bar_spacing = height / 10;
    let bar_height = width / 12;
