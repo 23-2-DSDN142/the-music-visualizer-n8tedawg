@@ -1,5 +1,6 @@
-const canvasWidth = 540;
-const canvasHeight = 960;
+ const canvasWidth = 1000; // 540
+ const canvasHeight = 750; // 960
+
 
 // THIS TALKS ABOUT THE SIZE OF THE CANVAS. YOU CAN CHANGE THE IDEA OF HOW YOU WANT TO EDIT IT
 
