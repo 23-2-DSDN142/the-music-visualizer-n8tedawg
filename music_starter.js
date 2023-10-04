@@ -13,7 +13,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   fill(217, 183, 91);
   noStroke();
-  ellipse(500, 750, 1100, 300)
+  //ellipse(500, 750, 1100, 300); // circular floor
+  rect(500, 750, 1100, 400); // rectangular floor
+
+
+
+  // These circles move to the bass of the sound EXMAPLE -------------------------------------------------------------------
  //ellipse(width/3, height/2, 50 + bass, 50 + bass)
  //ellipse(width/3*2, height/2, 50 + bass, 50 + bass)
 
@@ -95,4 +100,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     //rect(500, placementY, 100, lengthY);
 //    rect(lineBounce, placementY, lineBounce, lengthY);
 //  }
+
+// Test Person ----------------------------------------------------------------------------------------------------
+
+fill(0,0,0);
+rect(200, 650, 100, 150);
+fill(255,255,255);
+ellipse(200, 550, 100, 100);
+
 }
