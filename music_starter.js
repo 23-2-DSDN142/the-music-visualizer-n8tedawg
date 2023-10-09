@@ -1,3 +1,6 @@
+let testImg;
+let firstRun = true
+
 
 // THE WIDTH IS 1000
 // THE HEIGHT IS 750
@@ -16,6 +19,22 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   //ellipse(500, 750, 1100, 300); // circular floor
   rect(500, 750, 1100, 400); // rectangular floor
 
+  if(firstRun){
+    rectMode(CENTER);
+    testImg = loadImage('thesinger.png');
+
+    firstRun = false
+  }
+  
+  scale(0.1)
+  image(testImg, drum, 80)
+}
+  // vocal, drum, bass, and other are volumes ranging from 0 to 100
+  //function draw_one_frame(words, vocal, drum, bass, other, counter) {
+   
+    
+  //}
+  
 
 
   // These circles move to the bass of the sound EXMAPLE -------------------------------------------------------------------
@@ -103,9 +122,19 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 // Test Person ----------------------------------------------------------------------------------------------------
 
-fill(0,0,0);
-rect(200, 650, 100, 150);
-fill(255,255,255);
-ellipse(200, 550, 100, 100);
+// fill(0,0,0);
+// rect(200, 650, 100, 150);
+// fill(255,255,255);
+// ellipse(200, 550, 100, 100);
 
-}
+
+// if(vocal<=25){
+  
+// }\
+// The SINGER ----------------------------------------------------------------------------------------------------
+
+
+// vocal, drum, bass, and other are volumes ranging from 0 to 100
+//function draw_one_frame(words, vocal, drum, bass, other, counter) {
+  
+
