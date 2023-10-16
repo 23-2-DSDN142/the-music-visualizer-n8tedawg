@@ -1,6 +1,5 @@
-let testImg;
 let firstRun = true
-
+let singersinging = [];
 
 // THE WIDTH IS 1000
 // THE HEIGHT IS 750
@@ -9,6 +8,7 @@ let firstRun = true
 
 // THIS IS WHERE YOU CAN CREATE ADD ANYTHING TO MAKE THE MUSIC VISUALISER. YOU CAN OMMIT THIS OUT AND START NEW AND FRESH
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
+
   background(255, 228, 153) // yellow tan sky colour
 // textFont('Helvetica'); // please use CSS safe fonts
   rectMode(CENTER)
@@ -19,15 +19,34 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   //ellipse(500, 750, 1100, 300); // circular floor
   rect(500, 750, 1100, 400); // rectangular floor
 
-  if(firstRun){
+//  if(singerimageloadin){ //this is drawing the singer character.
+//    //rectMode(CENTER);
+//    testImg = loadImage('singernormal.png');
+//    singerimageloadin = false
+//    
+//  }
+  
+//  scale(0.2); // shrunk his size
+//  image(testImg, 1000, drum) // moves according to what it is.
+
+  if (firstRun){
     rectMode(CENTER);
-    testImg = loadImage('thesinger.png');
+    singersinging.push(loadImage('singersinging_0.png'));
+    singersinging.push(loadImage('singersinging_1.png'));
+    singersinging.push(loadImage('singersinging_2.png'));
 
     firstRun = false
   }
-  
-  scale(0.1)
-  image(testImg, drum, 80)
+
+  background(255);
+
+  let VocalFrame = int(map(vocal, 0, 100, 0, 2));
+  console.log(VocalFrame);
+  push();
+  scale(0.1);
+  image(singersinging[VocalFrame], width/2, height/2)
+  pop();
+
 }
   // vocal, drum, bass, and other are volumes ranging from 0 to 100
   //function draw_one_frame(words, vocal, drum, bass, other, counter) {
