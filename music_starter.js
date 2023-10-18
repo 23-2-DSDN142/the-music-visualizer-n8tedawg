@@ -1,5 +1,9 @@
 let firstRun = true
 let singersinging = [];
+let topsquarex = 0
+let topsquarey = 550
+let bottomsquarex = 1000
+let bottomsquarey = 750
 
 // THE WIDTH IS 1000
 // THE HEIGHT IS 750
@@ -11,13 +15,24 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   background(255, 228, 153) // yellow tan sky colour
 // textFont('Helvetica'); // please use CSS safe fonts
-  rectMode(CENTER)
-  textSize(24);
+  //rectMode(CENTER)
 
   fill(217, 183, 91);
   noStroke();
   //ellipse(500, 750, 1100, 300); // circular floor
-  rect(500, 750, 1100, 400); // rectangular floor
+  //rect(500, 750, 1100, 400); // rectangular floor
+  rect(0, 550, 1000, 750) // rectangular floor without the rectMode(CENTER)
+
+//  for (let i = 1; i <=10; i++){
+//    let lineStep = i*10
+//    stroke(4);
+//    rect(topsquarex+10, lineStep, bottomsquarex-950, lineStep);
+//  }
+
+//  stroke(0,0,0);
+//  strokeWeight(4);
+  //rect(topsquarex+10, topsquarey+10, bottomsquarex-20, bottomsquarey-570);
+//  rect(topsquarex+10, topsquarey+10, bottomsquarex-950, bottomsquarey-700);
 
 //  if(singerimageloadin){ //this is drawing the singer character.
 //    //rectMode(CENTER);
@@ -26,6 +41,17 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 //    
 //  }
   
+//let dinosaurvibing = map(song.isPlaying, 0, 100, 200, 200);
+
+let img;
+function preload() {
+  img = loadImage('dinosaurimage.png');
+}
+function setup() {
+  image(img, 0, 0);
+}
+
+
 //  scale(0.2); // shrunk his size
 //  image(testImg, 1000, drum) // moves according to what it is.
 
@@ -47,7 +73,11 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   image(singersinging[VocalFrame], 1000, 400)
   pop();
 
-}
+
+    
+
+  }
+
 
 //  for(let i = 1; i < 5, i++ ){
 //
