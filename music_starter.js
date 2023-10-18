@@ -1,6 +1,6 @@
 let firstRun = true
 let loadDino = true
-let singersinging = [];
+let themusician = [];
 let topsquarex = 0
 let topsquarey = 550
 let bottomsquarex = 1000
@@ -46,25 +46,25 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 
 
-  if(loadDino){ // LOAD THE DINOSAUR IMAGE
-    testImg = loadImage('dinosaurimage.png');
+//  if(loadDino){ // LOAD THE DINOSAUR IMAGE
+//    testImg = loadImage('dinosaurimage.png');
 
-    loadDino = false
+//    loadDino = false
     
-  }
+//  }
   scale(0.3);
-  image(testImg, 80, drum) 
+//  image(testImg, 80, drum) 
   
   // (the loadImage variable, the vocal its moving to, how much you move it up or down)
   // you can also change it to (the loadImage variable, how much to move it left and right, and the vocal its moving to)
 
   if (firstRun){
-    singersinging.push(loadImage('singersinging/singersinging_0.png'));
-    singersinging.push(loadImage('singersinging/singersinging_1.png'));
-    singersinging.push(loadImage('singersinging/singersinging_2.png'));
-   singersinging.push(loadImage('singersinging/singersinging_3.png'));
-    singersinging.push(loadImage('singersinging/singersinging_4.png'));
-    singersinging.push(loadImage('singersinging/singersinging_5.png'));
+    themusician.push(loadImage('themusician/themusician_0.png'));
+    themusician.push(loadImage('themusician/themusician_1.png'));
+    themusician.push(loadImage('themusician/themusician_2.png'));
+    themusician.push(loadImage('themusician/themusician_3.png'));
+    themusician.push(loadImage('themusician/themusician_4.png'));
+    themusician.push(loadImage('themusician/themusician_5.png'));
 
     firstRun = false
   }
@@ -73,15 +73,15 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   console.log(VocalFrame);
   push();
   scale(0.6);
-  image(singersinging[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
+  image(themusician[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
   pop();
 
-
+}
   //EXAMPLE image test ------------------------------------------------------------------------------------------------------------------------------------
   
     
 
-  }
+
 
 
 //  for(let i = 1; i < 5, i++ ){
