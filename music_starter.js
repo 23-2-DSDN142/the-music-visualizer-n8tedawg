@@ -30,24 +30,30 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 //  image(testImg, 1000, drum) // moves according to what it is.
 
   if (firstRun){
-    rectMode(CENTER);
-    singersinging.push(loadImage('singersinging_0.png'));
-    singersinging.push(loadImage('singersinging_1.png'));
-    singersinging.push(loadImage('singersinging_2.png'));
+    singersinging.push(loadImage('singersinging/singersinging_0.png'));
+    singersinging.push(loadImage('singersinging/singersinging_1.png'));
+    singersinging.push(loadImage('singersinging/singersinging_2.png'));
+    singersinging.push(loadImage('singersinging/singersinging_3.png'));
+    singersinging.push(loadImage('singersinging/singersinging_4.png'));
+    singersinging.push(loadImage('singersinging/singersinging_5.png'));
 
     firstRun = false
   }
 
-  background(255);
-
-  let VocalFrame = int(map(vocal, 0, 100, 0, 2));
+  let VocalFrame = int(map(vocal, 0, 100, 0, 6));
   console.log(VocalFrame);
   push();
-  scale(0.1);
-  image(singersinging[VocalFrame], width/2, height/2)
+  scale(0.2);
+  image(singersinging[VocalFrame], 1000, 400)
   pop();
 
 }
+
+//  for(let i = 1; i < 5, i++ ){
+//
+//
+//  }
+
   // vocal, drum, bass, and other are volumes ranging from 0 to 100
   //function draw_one_frame(words, vocal, drum, bass, other, counter) {
    
