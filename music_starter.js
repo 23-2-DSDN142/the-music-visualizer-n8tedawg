@@ -1,11 +1,13 @@
 let firstRun = true
 let loadDino = true
+let loadMeteor = true
 let themusician = [];
 let topsquarex = 0
 let topsquarey = 550
 let bottomsquarex = 1000
 let bottomsquarey = 750
 let img;
+let themeteor;
 
 //DRAWING THE TREE
 let leaveAx = 400
@@ -30,6 +32,20 @@ let DRAWINGTREE = true
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   background(255, 228, 153) // yellow tan sky colour
+  
+  console.log(song.currentTime());
+
+    if(song.currentTime()>5){
+      //fill(252,252,252);
+      //rect(100,100,800,800);
+      push();
+      scale(1)
+      image('meteor.png', 100, 100);
+      pop();
+    }
+
+
+  
   fill(217, 183, 91);
   noStroke();
   rect(0, 550, 1000, 750) // rectangular floor without the rectMode(CENTER)
@@ -45,16 +61,24 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 //  endShape();
 
 
-
+//LOADING THE DINOSAURUS ------------------------------------------------------------------------------------------------------------
 //  if(loadDino){ // LOAD THE DINOSAUR IMAGE
 //    testImg = loadImage('dinosaurimage.png');
-
+    
 //    loadDino = false
     
 //  }
   scale(0.3);
-//  image(testImg, 80, drum) 
+//  image(testImg, drum, 500)// if it is just a number then move it sideways or up and down depending on that number
+
+
+
+  //map(song.currentTime(), 0,song.duration(), 0, 2300);
   
+
+
+
+
   // (the loadImage variable, the vocal its moving to, how much you move it up or down)
   // you can also change it to (the loadImage variable, how much to move it left and right, and the vocal its moving to)
 
@@ -70,13 +94,22 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   }
 
   let VocalFrame = int(map(vocal, 0, 100, 0, 6));
-  console.log(VocalFrame);
   push();
   scale(0.6);
   image(themusician[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
   pop();
 
-}
+
+
+  }
+
+
+
+
+
+
+
+
   //EXAMPLE image test ------------------------------------------------------------------------------------------------------------------------------------
   
     
