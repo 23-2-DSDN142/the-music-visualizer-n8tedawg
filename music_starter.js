@@ -3,19 +3,24 @@ let loadDino = true
 let loadMeteor = true
 let themusician = [];
 let topsquarex = 0
-let topsquarey = 550
-let bottomsquarex = 1000
+let topsquarey = 2000
+let bottomsquarex = 3500
 let bottomsquarey = 750
 let img;
 let themeteor;
 
+let runFirst = true
+
+
+
+
 //DRAWING THE TREE
-let leaveAx = 400
-let leaveAy = 320
-let leaveBx = 350
-let leaveBy = 320
-let leaveCx = 400
-let leaveCy = 400
+//let leaveAx = 400
+//let leaveAy = 320
+//let leaveBx = 350
+//let leaveBy = 320
+//let leaveCx = 400
+//let leaveCy = 400
 
 //THIS IS SOME GOOD CODING STUFF
 let leaforiginX = 500
@@ -31,26 +36,46 @@ let DRAWINGTREE = true
 // THIS IS WHERE YOU CAN CREATE ADD ANYTHING TO MAKE THE MUSIC VISUALISER. YOU CAN OMMIT THIS OUT AND START NEW AND FRESH
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
+  let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
+
+
   background(255, 228, 153) // yellow tan sky colour
   
   console.log(song.currentTime());
 
-    if(song.currentTime()>5){
+    
+//   if(song.currentTime()>5 && song.currentTime()<7){ // Spawn and Disappear Meteor
       //fill(252,252,252);
       //rect(100,100,800,800);
-      push();
-      scale(1)
-      image('meteor.png', 100, 100);
-      pop();
-    }
 
+      if(runFirst){
+        asteroid = loadImage('meteorfire.png');
+        runFirst = false
+      }
+
+      image(asteroid, 900, 60, -meteorSize, meteorSize+30);
+      runFirst = false
+//    }
+
+    if(loadDino){ // LOAD THE DINOSAUR IMAGE
+      testImg = loadImage('dinosaurimage.png');
+      
+      loadDino = false
+      
+    }
+    scale(0.3);
+    image(testImg, 100, drum+1000)// if it is just a number then move it sideways or up and down depending on that number
 
   
   fill(217, 183, 91);
   noStroke();
-  rect(0, 550, 1000, 750) // rectangular floor without the rectMode(CENTER)
+  rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey) // rectangular floor without the rectMode(CENTER)
   //ellipse(500, 750, 1100, 300); // circular floor
   //rect(500, 750, 1100, 400); // rectangular floor
+
+
+
+
 
 // THIS IS DRAWING THE TREE BC SOMEHTING NEEDS TO BE CODED, ALTHOUGH FLAMES INSTEAD COULD BE CODED-----------------------------------------
 //  function drawtree(leaforiginX,leaforiginY){
@@ -62,14 +87,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 
 //LOADING THE DINOSAURUS ------------------------------------------------------------------------------------------------------------
-//  if(loadDino){ // LOAD THE DINOSAUR IMAGE
-//    testImg = loadImage('dinosaurimage.png');
-    
-//    loadDino = false
-    
-//  }
-  scale(0.3);
-//  image(testImg, drum, 500)// if it is just a number then move it sideways or up and down depending on that number
+  
 
 
 
@@ -93,7 +111,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     firstRun = false
   }
 
-  let VocalFrame = int(map(vocal, 0, 100, 0, 6));
+  let VocalFrame = int(map(bass, 0, 100, 0, 6));
   push();
   scale(0.6);
   image(themusician[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
@@ -179,8 +197,8 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    // PBA with MAPS ---------------------------------------------------------------------------------------------
 //   fill(69, 120, 222);
    
-  // let positionchange = map(drum, 0, 100, 400, 0);
-//   rect(positionchange+300, 375, 100, 100); // moving sideways
+   //let positionchange = map(drum, 0, 100, 400, 0);
+   //rect(positionchange+300, 375, 100, 100); // moving sideways
    //rect(300, 375, positionchange, positionchange); //pulsing
 
    // testing the lerpcolor  function
