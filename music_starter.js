@@ -1,12 +1,14 @@
 let firstRun = true
+let loadDino = true
 let singersinging = [];
 let topsquarex = 0
 let topsquarey = 550
 let bottomsquarex = 1000
 let bottomsquarey = 750
+let img;
 
-// THE WIDTH IS 1000
-// THE HEIGHT IS 750
+// THE WIDTH IS 1000-----------------------------------------------------------------------------------------------------------------
+// THE HEIGHT IS 750-----------------------------------------------------------------------------------------------------------------
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 
@@ -14,66 +16,52 @@ let bottomsquarey = 750
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   background(255, 228, 153) // yellow tan sky colour
-// textFont('Helvetica'); // please use CSS safe fonts
-  //rectMode(CENTER)
-
   fill(217, 183, 91);
   noStroke();
+  rect(0, 550, 1000, 750) // rectangular floor without the rectMode(CENTER)
   //ellipse(500, 750, 1100, 300); // circular floor
   //rect(500, 750, 1100, 400); // rectangular floor
-  rect(0, 550, 1000, 750) // rectangular floor without the rectMode(CENTER)
-
-//  for (let i = 1; i <=10; i++){
-//    let lineStep = i*10
-//    stroke(4);
-//    rect(topsquarex+10, lineStep, bottomsquarex-950, lineStep);
-//  }
-
-//  stroke(0,0,0);
-//  strokeWeight(4);
-  //rect(topsquarex+10, topsquarey+10, bottomsquarex-20, bottomsquarey-570);
-//  rect(topsquarex+10, topsquarey+10, bottomsquarex-950, bottomsquarey-700);
-
-//  if(singerimageloadin){ //this is drawing the singer character.
-//    //rectMode(CENTER);
-//    testImg = loadImage('singernormal.png');
-//    singerimageloadin = false
-//    
-//  }
   
-//let dinosaurvibing = map(song.isPlaying, 0, 100, 200, 200);
-
-let img;
-function preload() {
-  img = loadImage('dinosaurimage.png');
-}
-function setup() {
-  image(img, 0, 0);
-}
+  fill(252,0,0)
+  beginShape();
+  vertex(500, 300)
+  bezierVertex(400, 320, 350, 320, 400, 400);
+  endShape();
 
 
-//  scale(0.2); // shrunk his size
-//  image(testImg, 1000, drum) // moves according to what it is.
+//  if(loadDino){ // LOAD THE DINOSAUR IMAGE
+//    testImg = loadImage('dinosaurimage.png');
 
-  if (firstRun){
-    singersinging.push(loadImage('singersinging/singersinging_0.png'));
-    singersinging.push(loadImage('singersinging/singersinging_1.png'));
-    singersinging.push(loadImage('singersinging/singersinging_2.png'));
-    singersinging.push(loadImage('singersinging/singersinging_3.png'));
-    singersinging.push(loadImage('singersinging/singersinging_4.png'));
-    singersinging.push(loadImage('singersinging/singersinging_5.png'));
+//    loadDino = false
+    
+//  }
+//  scale(0.3);
+//  image(testImg, 80, drum) 
+  
+  // (the loadImage variable, the vocal its moving to, how much you move it up or down)
+  // you can also change it to (the loadImage variable, how much to move it left and right, and the vocal its moving to)
 
-    firstRun = false
-  }
+//  if (firstRun){
+//    singersinging.push(loadImage('singersinging/singersinging_0.png'));
+//    singersinging.push(loadImage('singersinging/singersinging_1.png'));
+//    singersinging.push(loadImage('singersinging/singersinging_2.png'));
+//   singersinging.push(loadImage('singersinging/singersinging_3.png'));
+//    singersinging.push(loadImage('singersinging/singersinging_4.png'));
+//    singersinging.push(loadImage('singersinging/singersinging_5.png'));
 
-  let VocalFrame = int(map(vocal, 0, 100, 0, 6));
-  console.log(VocalFrame);
-  push();
-  scale(0.2);
-  image(singersinging[VocalFrame], 1000, 400)
-  pop();
+//    firstRun = false
+//  }
+
+//  let VocalFrame = int(map(vocal, 0, 100, 0, 6));
+//  console.log(VocalFrame);
+//  push();
+//  scale(0.6);
+//  image(singersinging[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
+//  pop();
 
 
+  //EXAMPLE image test ------------------------------------------------------------------------------------------------------------------------------------
+  
     
 
   }
@@ -192,4 +180,22 @@ function setup() {
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 //function draw_one_frame(words, vocal, drum, bass, other, counter) {
   
+// MISCHELLANEOUS----------------------------------------------------------------------------------------------------
 
+//  for (let i = 1; i <=10; i++){
+//    let lineStep = i*10
+//    stroke(4);
+//    rect(topsquarex+10, lineStep, bottomsquarex-950, lineStep);
+//  }
+
+//  stroke(0,0,0);
+//  strokeWeight(4);
+  //rect(topsquarex+10, topsquarey+10, bottomsquarex-20, bottomsquarey-570);
+//  rect(topsquarex+10, topsquarey+10, bottomsquarex-950, bottomsquarey-700);
+
+//  if(singerimageloadin){ //this is drawing the singer character.
+//    //rectMode(CENTER);
+//    testImg = loadImage('singernormal.png');
+//    singerimageloadin = false
+//    
+//  }
