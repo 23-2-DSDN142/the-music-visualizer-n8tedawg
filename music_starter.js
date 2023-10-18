@@ -7,6 +7,20 @@ let bottomsquarex = 1000
 let bottomsquarey = 750
 let img;
 
+//DRAWING THE TREE
+let leaveAx = 400
+let leaveAy = 320
+let leaveBx = 350
+let leaveBy = 320
+let leaveCx = 400
+let leaveCy = 400
+
+//THIS IS SOME GOOD CODING STUFF
+let leaforiginX = 500
+let leaforiginY = 300
+
+let DRAWINGTREE = true
+
 // THE WIDTH IS 1000-----------------------------------------------------------------------------------------------------------------
 // THE HEIGHT IS 750-----------------------------------------------------------------------------------------------------------------
 
@@ -21,43 +35,46 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   rect(0, 550, 1000, 750) // rectangular floor without the rectMode(CENTER)
   //ellipse(500, 750, 1100, 300); // circular floor
   //rect(500, 750, 1100, 400); // rectangular floor
-  
-  fill(252,0,0)
-  beginShape();
-  vertex(500, 300)
-  bezierVertex(400, 320, 350, 320, 400, 400);
-  endShape();
+
+// THIS IS DRAWING THE TREE BC SOMEHTING NEEDS TO BE CODED, ALTHOUGH FLAMES INSTEAD COULD BE CODED-----------------------------------------
+//  function drawtree(leaforiginX,leaforiginY){
+//  //fill(135, 168, 50)
+//  beginShape();
+//  vertex(leaforiginX, leaforiginY)
+//  bezierVertex(leaforiginX-100, leaforiginY+20, leaforiginX-150, leaforiginY+20, leaforiginX-100, leaforiginY+100);
+//  endShape();
 
 
-//  if(loadDino){ // LOAD THE DINOSAUR IMAGE
-//    testImg = loadImage('dinosaurimage.png');
 
-//    loadDino = false
+  if(loadDino){ // LOAD THE DINOSAUR IMAGE
+    testImg = loadImage('dinosaurimage.png');
+
+    loadDino = false
     
-//  }
-//  scale(0.3);
-//  image(testImg, 80, drum) 
+  }
+  scale(0.3);
+  image(testImg, 80, drum) 
   
   // (the loadImage variable, the vocal its moving to, how much you move it up or down)
   // you can also change it to (the loadImage variable, how much to move it left and right, and the vocal its moving to)
 
-//  if (firstRun){
-//    singersinging.push(loadImage('singersinging/singersinging_0.png'));
-//    singersinging.push(loadImage('singersinging/singersinging_1.png'));
-//    singersinging.push(loadImage('singersinging/singersinging_2.png'));
-//   singersinging.push(loadImage('singersinging/singersinging_3.png'));
-//    singersinging.push(loadImage('singersinging/singersinging_4.png'));
-//    singersinging.push(loadImage('singersinging/singersinging_5.png'));
+  if (firstRun){
+    singersinging.push(loadImage('singersinging/singersinging_0.png'));
+    singersinging.push(loadImage('singersinging/singersinging_1.png'));
+    singersinging.push(loadImage('singersinging/singersinging_2.png'));
+   singersinging.push(loadImage('singersinging/singersinging_3.png'));
+    singersinging.push(loadImage('singersinging/singersinging_4.png'));
+    singersinging.push(loadImage('singersinging/singersinging_5.png'));
 
-//    firstRun = false
-//  }
+    firstRun = false
+  }
 
-//  let VocalFrame = int(map(vocal, 0, 100, 0, 6));
-//  console.log(VocalFrame);
-//  push();
-//  scale(0.6);
-//  image(singersinging[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
-//  pop();
+  let VocalFrame = int(map(vocal, 0, 100, 0, 6));
+  console.log(VocalFrame);
+  push();
+  scale(0.6);
+  image(singersinging[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
+  pop();
 
 
   //EXAMPLE image test ------------------------------------------------------------------------------------------------------------------------------------
