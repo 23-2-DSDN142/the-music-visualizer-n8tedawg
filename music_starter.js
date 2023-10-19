@@ -54,17 +54,17 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   console.log(song.currentTime());
 
-  function drawmeteor(){ // this draws the meteor
+  function drawmeteor(x,y){ // this draws the meteor
     if(runFirst){
       asteroid = loadImage('meteorfire.png');
       runFirst = false
     }
-
-    image(asteroid, 900, 60, -meteorSize, meteorSize+30);
+    translate(x,y);
+    image(asteroid, 0, 0, -meteorSize, meteorSize+30);
     runFirst = false
   }
     
-    drawmeteor();
+    
 //   if(song.currentTime()>5 && song.currentTime()<7){ // Spawn and Disappear Meteor
       //fill(252,252,252);
       //rect(100,100,800,800);
@@ -113,7 +113,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   // (the loadImage variable, the vocal its moving to, how much you move it up or down)
   // you can also change it to (the loadImage variable, how much to move it left and right, and the vocal its moving to)
 
-  function drawdrummer(){
+  function drawdrummer(x,y){
   if (changethis){
     thedrummer.push(loadImage('thedrummer/thedrummer_0.png'));
     thedrummer.push(loadImage('thedrummer/thedrummer_1.png'));
@@ -125,11 +125,13 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     changethis = false
   }
 
-  let VocalDrum = int(map(drum, 0, 100, 0, 6));
+  let drummingpart = int(map(drum, 0, 100, 0, 6));
   push();
+  translate(x,y)
   scale(0.2);
-  image(thedrummer[VocalDrum], 800, 900) // (the singer, how much he moves x-axis, how much he moves y-axis)
+  image(thedrummer[drummingpart],0,0) // (the drummer, how much he moves x-axis, how much he moves y-axis)
   pop();
+
   }
 
   function drawmusician(x,y){
@@ -152,8 +154,9 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   pop();
   }
 
-  drawdrummer();
-  drawmusician(200, 100);
+  drawdrummer(175, 175);
+  drawmusician(-50,50);
+  drawmeteor(900,60);
   
   }
 
