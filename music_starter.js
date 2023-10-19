@@ -1,16 +1,24 @@
 let firstRun = true
+
+let changethis = true
+let thedrummer = [];
+
 let loadDino = true
 let loadMeteor = true
 let themusician = [];
 let topsquarex = 0
-let topsquarey = 2000
-let bottomsquarex = 3500
+let topsquarey = 575
+let bottomsquarex = 1000
 let bottomsquarey = 750
 let img;
 let themeteor;
 
 let runFirst = true
 
+
+
+let randomA = 500
+let randomB = 375
 
 
 
@@ -37,39 +45,44 @@ let DRAWINGTREE = true
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
-
-
-  background(255, 228, 153) // yellow tan sky colour
   
+  background(255, 228, 153) // yellow tan sky colour
+  fill(217, 183, 91);
+  noStroke();
+  rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey)
+
+
   console.log(song.currentTime());
 
+  function drawmeteor(){ // this draws the meteor
+    if(runFirst){
+      asteroid = loadImage('meteorfire.png');
+      runFirst = false
+    }
+
+    image(asteroid, 900, 60, -meteorSize, meteorSize+30);
+    runFirst = false
+  }
     
+    drawmeteor();
 //   if(song.currentTime()>5 && song.currentTime()<7){ // Spawn and Disappear Meteor
       //fill(252,252,252);
       //rect(100,100,800,800);
 
-      if(runFirst){
-        asteroid = loadImage('meteorfire.png');
-        runFirst = false
-      }
-
-      image(asteroid, 900, 60, -meteorSize, meteorSize+30);
-      runFirst = false
+      
 //    }
 
-    if(loadDino){ // LOAD THE DINOSAUR IMAGE
-      testImg = loadImage('dinosaurimage.png');
+//    if(loadDino){ // LOAD THE DINOSAUR IMAGE _____________________________________________________________________________________________________________________________________________________
+//      testImg = loadImage('dinosaurimage.png');
       
-      loadDino = false
+//     loadDino = false
       
-    }
-    scale(0.3);
-    image(testImg, 100, drum+1000)// if it is just a number then move it sideways or up and down depending on that number
+//    }
+     //need this to make the images appear otherwise images don't appear
+//    image(testImg, 100, drum+1000)// if it is just a number then move it sideways or up and down depending on that number
 
   
-  fill(217, 183, 91);
-  noStroke();
-  rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey) // rectangular floor without the rectMode(CENTER)
+   // rectangular floor without the rectMode(CENTER)
   //ellipse(500, 750, 1100, 300); // circular floor
   //rect(500, 750, 1100, 400); // rectangular floor
 
@@ -100,6 +113,26 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   // (the loadImage variable, the vocal its moving to, how much you move it up or down)
   // you can also change it to (the loadImage variable, how much to move it left and right, and the vocal its moving to)
 
+  function drawdrummer(){
+  if (changethis){
+    thedrummer.push(loadImage('thedrummer/thedrummer_0.png'));
+    thedrummer.push(loadImage('thedrummer/thedrummer_1.png'));
+    thedrummer.push(loadImage('thedrummer/thedrummer_2.png'));
+    thedrummer.push(loadImage('thedrummer/thedrummer_3.png'));
+    thedrummer.push(loadImage('thedrummer/thedrummer_4.png'));
+    thedrummer.push(loadImage('thedrummer/thedrummer_5.png'));
+
+    changethis = false
+  }
+
+  let VocalDrum = int(map(drum, 0, 100, 0, 6));
+  push();
+  scale(0.2);
+  image(thedrummer[VocalDrum], 800, 900) // (the singer, how much he moves x-axis, how much he moves y-axis)
+  pop();
+  }
+
+  function drawmusician(x,y){
   if (firstRun){
     themusician.push(loadImage('themusician/themusician_0.png'));
     themusician.push(loadImage('themusician/themusician_1.png'));
@@ -113,12 +146,15 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   let VocalFrame = int(map(bass, 0, 100, 0, 6));
   push();
-  scale(0.6);
-  image(themusician[VocalFrame], 1300, 400) // (the singer, how much he moves x-axis, how much he moves y-axis)
+  translate(x,y)
+  scale(0.2);
+  image(themusician[VocalFrame],0,0) // (the musician, how much he moves x-axis, how much he moves y-axis)
   pop();
+  }
 
-
-
+  drawdrummer();
+  drawmusician(200, 100);
+  
   }
 
 
