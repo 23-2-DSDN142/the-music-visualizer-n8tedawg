@@ -24,20 +24,8 @@ let thedinosrun = true
 let runX = 5700
 let runY = 300
 
-
-//DRAWING THE TREE
-//let leaveAx = 400
-//let leaveAy = 320
-//let leaveBx = 350
-//let leaveBy = 320
-//let leaveCx = 400
-//let leaveCy = 400
-
-//THIS IS SOME GOOD CODING STUFF
-let leaforiginX = 500
-let leaforiginY = 300
-
-let DRAWINGTREE = true
+let ray1 = 600
+let ray2 = 150
 
 // THE WIDTH IS 1000-----------------------------------------------------------------------------------------------------------------
 // THE HEIGHT IS 750-----------------------------------------------------------------------------------------------------------------
@@ -48,13 +36,26 @@ let DRAWINGTREE = true
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   //let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
-  let meteorgettingclose = map(song.currentTime(), 0, song.duration(), -50, 1000);
-  let dinosaurvibing = map(vocal, 0, 100, 0, -300);
-  let treeswaying = map(other, 0, 100, 0, 120);
+  let meteorgettingclose = map(song.currentTime(), 0, song.duration(), -1000, 2000); // Map that allows the meteor to come in during the duration of the song
+  let dinosaurvibing = map(vocal, 0, 100, 0, -600); // Map that allows the dinosaurs to be proportionate to the 'vocals' variable
+  let treejump = map(other, 0, 100, 0, 600); // Map that allows the trees to be proportionate to the 'other' variable
+  let sunjump = map(other, 0, 100, 0, 200); // Map that allows the sun to be proportionate to 'other' variable
+  let rayjump = map(other, 0, 100, 0, 30); // Map that allows the rays to be proportionate to 'other variable
 
-  background(255, 228, 153) // yellow tan sky colour
+  background(255, 228, 153) // Yellow tan sky colour
+  background(125, 189, 229) // Sky blue colour
 
-  function drawground(){ // this draws the ground for the musicians to stand on
+  triangle(ray1-rayjump, ray2+rayjump, ray1+50, ray2-75-rayjump, ray1+100+rayjump, ray2+rayjump); // Top ray of the sun
+  triangle(ray1+100, ray2, ray1+200, ray2+50, ray1+100, ray2+100); //  Right ray of the sun
+  triangle(ray1, ray2, ray1-100, ray2+50, ray1, ray2+100);// Left Ray of the sun
+  triangle(ray1, ray2+100, ray1+50, ray2+200, ray1+100, ray2+100)
+
+
+  ellipse (650, 200, sunjump, sunjump); // The sun
+
+  
+
+  function drawground(){ // This draws the ground for the musicians to stand on
   fill(217, 183, 91); //  the flooring colour
   strokeWeight(6);
   rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey) // the flooring
@@ -89,18 +90,20 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   }
 
-  function drawtrees(x,y){
+  function drawtrees(x,y){ // Draws the trees which is proportionate to the 'other' variable
     if (treesway){
      sidetree = loadImage('tree.png');
      treesway = false
   
     }
+    push()
+    scale(0.2);
     translate(x,y);
-    image(sidetree, 700, treeswaying)
-    image(sidetree, 100, treeswaying)
+    image(sidetree, -700, treejump+150) // left side tree
+    image(sidetree, 3200, treejump+150) // right side tree
+    pop();
 
   }
-
 
   function meteorgetsbigger(x,y){ // this draws the meteor (without the flames) getting closer to the caveman
     if(runFirst){
