@@ -27,6 +27,7 @@ let runY = 300
 let ray1 = 635
 let ray2 = 75
 
+
 // THE WIDTH IS 1000-----------------------------------------------------------------------------------------------------------------
 // THE HEIGHT IS 750-----------------------------------------------------------------------------------------------------------------
 
@@ -94,6 +95,53 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     image(facerightdinosaur, -550, dinosaurvibing+400)
 
   }
+
+  function codedtree(){ // Draws the Coded trees
+    strokeWeight(3)
+    fill(190, 130, 59)
+    quad (450, 700, 475, 305, 525, 305, 550, 700)
+
+
+    strokeWeight(3)
+    fill(135, 168, 62) // Left Leaf of the Tree
+    beginShape();
+    vertex(500, 300)
+    bezierVertex(400, 320, 350, 320, 400, 400);
+    endShape();
+
+    strokeWeight(3)
+    line(400, 400, 500, 300)
+
+    strokeWeight(3) // Right Leaf of the tree
+    fill(135, 168, 62)
+    beginShape();
+    vertex(500, 300)
+    bezierVertex(600, 320, 650, 320, 600, 400);
+    endShape();
+
+    strokeWeight(3)
+    line(600, 400, 500, 300)
+
+    strokeWeight(3) // Top left Leaf of the tree
+    fill(135, 168, 62)
+    beginShape();
+    vertex(500, 300)
+    bezierVertex(400, 220, 350, 220, 350, 300);
+    endShape();
+
+    strokeWeight(3)
+    line(350, 300, 500, 300)
+
+    strokeWeight(3) // Top right Leaf of the tree
+    fill(135, 168, 62)
+    beginShape();
+    vertex(500, 300)
+    bezierVertex(600, 220, 650, 220, 650, 300);
+    endShape();
+
+    strokeWeight(3)
+    line(650, 300, 500, 300)
+}
 
   function drawtrees(x,y){ // Draws the trees which is proportionate to the 'other' variable
     if (treesway){
@@ -191,7 +239,8 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  // }   
 
     meteorgetsbigger();
-    drawtrees(); 
+  //  drawtrees(); 
+    codedtree()
     drawground();
     
   //  drawdrummer(300, 175);
