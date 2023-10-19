@@ -1,9 +1,11 @@
 let firstRun = true
 
 let dinosaurcrowd = true
+let treesway = true
 
 let changethis = true
 let thedrummer = [];
+let thetree = [];
 
 let loadDino = true
 let loadMeteor = true
@@ -16,6 +18,11 @@ let img;
 let themeteor;
 
 let runFirst = true
+
+let thedinosrun = true
+
+let runX = 5700
+let runY = 300
 
 
 //DRAWING THE TREE
@@ -43,6 +50,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   //let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
   let meteorgettingclose = map(song.currentTime(), 0, song.duration(), -50, 1000);
   let dinosaurvibing = map(vocal, 0, 100, 0, -300);
+  let treeswaying = map(other, 0, 100, 0, 120);
 
   background(255, 228, 153) // yellow tan sky colour
 
@@ -81,13 +89,26 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   }
 
+  function drawtrees(x,y){
+    if (treesway){
+     sidetree = loadImage('tree.png');
+     treesway = false
+  
+    }
+    translate(x,y);
+    image(sidetree, 700, treeswaying)
+    image(sidetree, 100, treeswaying)
+
+  }
+
+
   function meteorgetsbigger(x,y){ // this draws the meteor (without the flames) getting closer to the caveman
     if(runFirst){
       asteroid = loadImage('meteor.png');
       runFirst = false
     }
     translate(x,y);
-    image(asteroid, 0, 0, meteorgettingclose, meteorgettingclose);
+    image(asteroid, 0, 0, meteorgettingclose+10, meteorgettingclose);
     runFirst = false
 
   }
@@ -133,6 +154,23 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     pop();
   }
 
+//  function dinosrunning(x,y){ // this draws the small dinosaurs running in the background
+
+//    if(song.currentTime()>4 && song.currentTime()<7){
+//       if (thedinosrun){
+//        greenbabies = loadImage('dinosaurimage.png')
+//        thedinosrun = false
+//       }
+//       translate(x,y)
+//       scale(0.5)
+//       image(greenbabies, 0,0);
+       
+//       thedinosrun = false
+      
+//    }
+
+//  }
+
  // function drawgreendino(x,y){
  //   if(loadDino){ // LOAD THE DINOSAUR IMAGE _____________________________________________________________________________________________________________________________________________________
  //     dinogreen = loadImage('dinosaurimage.png');
@@ -145,10 +183,17 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  // }   
 
     meteorgetsbigger();
+    drawtrees(); 
     drawground();
-    drawdrummer(175, 175);
-    drawmusician(-50,50);
+    
+    drawdrummer(300, 175);
+    drawmusician(100,50);
     drawcrowd(200, 500);
+    
+
+//    dinosrunning(runX, runY);
+//    runX = runX-15
+    //runX = runX - 5
   //  drawgreendino(100,100);
 //    drawmeteor(900,60);
     
