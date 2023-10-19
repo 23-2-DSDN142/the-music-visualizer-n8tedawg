@@ -24,8 +24,8 @@ let thedinosrun = true
 let runX = 5700
 let runY = 300
 
-let ray1 = 600
-let ray2 = 150
+let ray1 = 635
+let ray2 = 75
 
 // THE WIDTH IS 1000-----------------------------------------------------------------------------------------------------------------
 // THE HEIGHT IS 750-----------------------------------------------------------------------------------------------------------------
@@ -45,13 +45,18 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(255, 228, 153) // Yellow tan sky colour
   background(125, 189, 229) // Sky blue colour
 
-  triangle(ray1-rayjump, ray2+rayjump, ray1+50, ray2-75-rayjump, ray1+100+rayjump, ray2+rayjump); // Top ray of the sun
-  triangle(ray1+100, ray2, ray1+200, ray2+50, ray1+100, ray2+100); //  Right ray of the sun
-  triangle(ray1, ray2, ray1-100, ray2+50, ray1, ray2+100);// Left Ray of the sun
-  triangle(ray1, ray2+100, ray1+50, ray2+200, ray1+100, ray2+100)
+//  triangle(ray1+20-rayjump, ray2+rayjump, ray1+50, ray2-100-rayjump, ray1+80+rayjump, ray2+rayjump); // Top ray of the sun
+//  triangle(ray1+20-rayjump, ray2+100-rayjump, ray1+50, ray2+200+rayjump, ray1+80+rayjump, ray2+100-rayjump); // Bottom ray of the sun
+//  triangle(ray1+rayjump, ray2+20-rayjump, ray1-100-rayjump, ray2+50, ray1+rayjump, ray2+80+rayjump);// Left ray of the sun
+//  triangle(ray1+100-rayjump, ray2+20-rayjump, ray1+200+rayjump, ray2+50, ray1+100-rayjump, ray2+80+rayjump); //  Right ray of the sun
+  
+  rect(ray1+5-rayjump, ray2-10-rayjump, 30+rayjump, 100+rayjump) // Top Sunray
+  rect(ray1-rayjump, ray2+160-rayjump, 30+rayjump, 100+rayjump) // Bottom Sunray
+  rect(ray1-120-rayjump, ray2+110-rayjump, 100+rayjump, 30+rayjump)// Left Sunray
+  rect(ray1+50-rayjump, ray2+110-rayjump, 100+rayjump, 30+rayjump)// Right Sunray
 
 
-  ellipse (650, 200, sunjump, sunjump); // The sun
+  ellipse (645, 200, sunjump, sunjump); // The sun
 
   
 
@@ -189,7 +194,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     drawtrees(); 
     drawground();
     
-    drawdrummer(300, 175);
+  //  drawdrummer(300, 175);
     drawmusician(100,50);
     drawcrowd(200, 500);
     
