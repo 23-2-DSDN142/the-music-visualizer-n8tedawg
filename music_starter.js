@@ -46,21 +46,9 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(255, 228, 153) // Yellow tan sky colour
   background(125, 189, 229) // Sky blue colour
 
-//  triangle(ray1+20-rayjump, ray2+rayjump, ray1+50, ray2-100-rayjump, ray1+80+rayjump, ray2+rayjump); // Top ray of the sun
-//  triangle(ray1+20-rayjump, ray2+100-rayjump, ray1+50, ray2+200+rayjump, ray1+80+rayjump, ray2+100-rayjump); // Bottom ray of the sun
-//  triangle(ray1+rayjump, ray2+20-rayjump, ray1-100-rayjump, ray2+50, ray1+rayjump, ray2+80+rayjump);// Left ray of the sun
-//  triangle(ray1+100-rayjump, ray2+20-rayjump, ray1+200+rayjump, ray2+50, ray1+100-rayjump, ray2+80+rayjump); //  Right ray of the sun
-  
-  rect(ray1+5-rayjump, ray2-10-rayjump, 30+rayjump, 100+rayjump) // Top Sunray
-  rect(ray1-rayjump, ray2+160-rayjump, 30+rayjump, 100+rayjump) // Bottom Sunray
-  rect(ray1-120-rayjump, ray2+110-rayjump, 100+rayjump, 30+rayjump)// Left Sunray
-  rect(ray1+50-rayjump, ray2+110-rayjump, 100+rayjump, 30+rayjump)// Right Sunray
-
-
   ellipse (645, 200, sunjump, sunjump); // The sun
 
   
-
   function drawground(){ // This draws the ground for the musicians to stand on
   fill(217, 183, 91); //  the flooring colour
   strokeWeight(6);
@@ -97,49 +85,49 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   }
 
   function codedtree(){ // Draws the Coded trees
-    strokeWeight(3)
+    strokeWeight(6)
     fill(190, 130, 59)
     quad (450, 700, 475, 305, 525, 305, 550, 700)
 
 
-    strokeWeight(3)
+    strokeWeight(6)
     fill(135, 168, 62) // Left Leaf of the Tree
     beginShape();
     vertex(500, 300)
     bezierVertex(400, 320, 350, 320, 400, 400);
     endShape();
 
-    strokeWeight(3)
+    strokeWeight(6)
     line(400, 400, 500, 300)
 
-    strokeWeight(3) // Right Leaf of the tree
+    strokeWeight(6) // Right Leaf of the tree
     fill(135, 168, 62)
     beginShape();
     vertex(500, 300)
     bezierVertex(600, 320, 650, 320, 600, 400);
     endShape();
 
-    strokeWeight(3)
+    strokeWeight(6)
     line(600, 400, 500, 300)
 
-    strokeWeight(3) // Top left Leaf of the tree
+    strokeWeight(6) // Top left Leaf of the tree
     fill(135, 168, 62)
     beginShape();
     vertex(500, 300)
     bezierVertex(400, 220, 350, 220, 350, 300);
     endShape();
 
-    strokeWeight(3)
+    strokeWeight(6)
     line(350, 300, 500, 300)
 
-    strokeWeight(3) // Top right Leaf of the tree
+    strokeWeight(6) // Top right Leaf of the tree
     fill(135, 168, 62)
     beginShape();
     vertex(500, 300)
     bezierVertex(600, 220, 650, 220, 650, 300);
     endShape();
 
-    strokeWeight(3)
+    strokeWeight(6)
     line(650, 300, 500, 300)
 }
 
@@ -240,7 +228,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
     meteorgetsbigger();
   //  drawtrees(); 
-    codedtree()
+    codedtree(200, 200, 200, treejump);
     drawground();
     
   //  drawdrummer(300, 175);
