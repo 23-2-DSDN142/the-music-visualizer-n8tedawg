@@ -1,25 +1,21 @@
 let firstRun = true
 
+let dinosaurcrowd = true
+
 let changethis = true
 let thedrummer = [];
 
 let loadDino = true
 let loadMeteor = true
 let themusician = [];
-let topsquarex = 0
+let topsquarex = -10
 let topsquarey = 575
-let bottomsquarex = 1000
+let bottomsquarex = 1200
 let bottomsquarey = 750
 let img;
 let themeteor;
 
 let runFirst = true
-
-
-
-let randomA = 500
-let randomB = 375
-
 
 
 //DRAWING THE TREE
@@ -44,26 +40,111 @@ let DRAWINGTREE = true
 // THIS IS WHERE YOU CAN CREATE ADD ANYTHING TO MAKE THE MUSIC VISUALISER. YOU CAN OMMIT THIS OUT AND START NEW AND FRESH
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
-  let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
+  //let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
+  let meteorgettingclose = map(song.currentTime(), 0, song.duration(), 0, 1000);
   
   background(255, 228, 153) // yellow tan sky colour
-  fill(217, 183, 91);
-  noStroke();
-  rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey)
 
+  function drawground(){ // this draws the ground for the musicians to stand on
+  fill(217, 183, 91); //  the flooring colour
+  strokeWeight(6);
+  rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey) // the flooring
+  }
 
   console.log(song.currentTime());
 
-  function drawmeteor(x,y){ // this draws the meteor
+//  function drawmeteor(x,y){ // this draws the meteor
+//    if(runFirst){
+//      asteroid = loadImage('meteorfire.png');
+//      runFirst = false
+//    }
+//    translate(x,y);
+//    image(asteroid, 0, 0, -meteorSize, meteorSize+30);
+//    runFirst = false
+//  }
+
+  function drawcrowd(x,y){
+    if(dinosaurcrowd){
+      dinosaurshadow = loadImage('shadowdinosaurleft.png');
+      dinosaurshadow2 = loadImage('shadowdinosaurright.png');
+      dinosaurcrowd = false
+
+    }
+  
+    translate(x,y);
+    scale(0.2);
+    image(dinosaurshadow, 2000, bass)
+    image(dinosaurshadow2, -1400, drum)
+
+  }
+
+
+
+
+
+
+  function meteorgetsbigger(x,y){ // this draws the meteor (without the flames) getting closer to the caveman
     if(runFirst){
-      asteroid = loadImage('meteorfire.png');
+      asteroid = loadImage('meteor.png');
       runFirst = false
     }
     translate(x,y);
-    image(asteroid, 0, 0, -meteorSize, meteorSize+30);
+    image(asteroid, 0, 0, meteorgettingclose, meteorgettingclose);
     runFirst = false
+
   }
+
+  function drawdrummer(x,y){ // this draws the drummer
+    if (changethis){
+      thedrummer.push(loadImage('thedrummer/thedrummer_0.png'));
+      thedrummer.push(loadImage('thedrummer/thedrummer_1.png'));
+      thedrummer.push(loadImage('thedrummer/thedrummer_2.png'));
+      thedrummer.push(loadImage('thedrummer/thedrummer_3.png'));
+      thedrummer.push(loadImage('thedrummer/thedrummer_4.png'));
+      thedrummer.push(loadImage('thedrummer/thedrummer_5.png'));
+  
+      changethis = false
+    }
+  
+    let drummingpart = int(map(drum, 0, 100, 0, 6));
+    push();
+    translate(x,y)
+    scale(0.2);
+    image(thedrummer[drummingpart],0,0) // (the drummer, how much he moves x-axis, how much he moves y-axis)
+    pop();
+  
+  }
+  
+  function drawmusician(x,y){ // this draws the bassist
+    if (firstRun){
+      themusician.push(loadImage('themusician/themusician_0.png'));
+      themusician.push(loadImage('themusician/themusician_1.png'));
+      themusician.push(loadImage('themusician/themusician_2.png'));
+      themusician.push(loadImage('themusician/themusician_3.png'));
+      themusician.push(loadImage('themusician/themusician_4.png'));
+      themusician.push(loadImage('themusician/themusician_5.png'));
+  
+      firstRun = false
+    }
+  
+    let VocalFrame = int(map(bass, 0, 100, 0, 6));
+    push();
+    translate(x,y)
+    scale(0.2);
+    image(themusician[VocalFrame],0,0) // (the musician, how much he moves x-axis, how much he moves y-axis)
+    pop();
+  }
+
+    meteorgetsbigger();
+    drawground();
+    drawdrummer(175, 175);
+    drawmusician(-50,50);
+    drawcrowd(200, 500);
+//    drawmeteor(900,60);
     
+    
+    
+    }
     
 //   if(song.currentTime()>5 && song.currentTime()<7){ // Spawn and Disappear Meteor
       //fill(252,252,252);
@@ -113,52 +194,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   // (the loadImage variable, the vocal its moving to, how much you move it up or down)
   // you can also change it to (the loadImage variable, how much to move it left and right, and the vocal its moving to)
 
-  function drawdrummer(x,y){
-  if (changethis){
-    thedrummer.push(loadImage('thedrummer/thedrummer_0.png'));
-    thedrummer.push(loadImage('thedrummer/thedrummer_1.png'));
-    thedrummer.push(loadImage('thedrummer/thedrummer_2.png'));
-    thedrummer.push(loadImage('thedrummer/thedrummer_3.png'));
-    thedrummer.push(loadImage('thedrummer/thedrummer_4.png'));
-    thedrummer.push(loadImage('thedrummer/thedrummer_5.png'));
-
-    changethis = false
-  }
-
-  let drummingpart = int(map(drum, 0, 100, 0, 6));
-  push();
-  translate(x,y)
-  scale(0.2);
-  image(thedrummer[drummingpart],0,0) // (the drummer, how much he moves x-axis, how much he moves y-axis)
-  pop();
-
-  }
-
-  function drawmusician(x,y){
-  if (firstRun){
-    themusician.push(loadImage('themusician/themusician_0.png'));
-    themusician.push(loadImage('themusician/themusician_1.png'));
-    themusician.push(loadImage('themusician/themusician_2.png'));
-    themusician.push(loadImage('themusician/themusician_3.png'));
-    themusician.push(loadImage('themusician/themusician_4.png'));
-    themusician.push(loadImage('themusician/themusician_5.png'));
-
-    firstRun = false
-  }
-
-  let VocalFrame = int(map(bass, 0, 100, 0, 6));
-  push();
-  translate(x,y)
-  scale(0.2);
-  image(themusician[VocalFrame],0,0) // (the musician, how much he moves x-axis, how much he moves y-axis)
-  pop();
-  }
-
-  drawdrummer(175, 175);
-  drawmusician(-50,50);
-  drawmeteor(900,60);
   
-  }
 
 
 
