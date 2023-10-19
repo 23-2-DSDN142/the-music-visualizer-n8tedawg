@@ -41,8 +41,9 @@ let DRAWINGTREE = true
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   //let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
-  let meteorgettingclose = map(song.currentTime(), 0, song.duration(), 0, 1000);
-  
+  let meteorgettingclose = map(song.currentTime(), 0, song.duration(), -50, 1000);
+  let dinosaurvibing = map(vocal, 0, 100, 0, -300);
+
   background(255, 228, 153) // yellow tan sky colour
 
   function drawground(){ // this draws the ground for the musicians to stand on
@@ -63,25 +64,22 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 //    runFirst = false
 //  }
 
-  function drawcrowd(x,y){
+  function drawcrowd(x,y){ // draws the dinosaur crowd
     if(dinosaurcrowd){
-      dinosaurshadow = loadImage('shadowdinosaurleft.png');
-      dinosaurshadow2 = loadImage('shadowdinosaurright.png');
+      faceleftdinosaur = loadImage('shadowdinosaurleft.png');
+      facerightdinosaur = loadImage('shadowdinosaurright.png');
       dinosaurcrowd = false
 
     }
   
     translate(x,y);
     scale(0.2);
-    image(dinosaurshadow, 2000, bass)
-    image(dinosaurshadow2, -1400, drum)
+    image(faceleftdinosaur, 3000, dinosaurvibing) // the dinosaur on the very far right
+    image(facerightdinosaur, -1400, dinosaurvibing) // the dinosaur on the very left
+    image(faceleftdinosaur, 1500, dinosaurvibing+200) // the dinosaur in the middle on the right
+    image(facerightdinosaur, -550, dinosaurvibing+400)
 
   }
-
-
-
-
-
 
   function meteorgetsbigger(x,y){ // this draws the meteor (without the flames) getting closer to the caveman
     if(runFirst){
@@ -135,11 +133,23 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     pop();
   }
 
+ // function drawgreendino(x,y){
+ //   if(loadDino){ // LOAD THE DINOSAUR IMAGE _____________________________________________________________________________________________________________________________________________________
+ //     dinogreen = loadImage('dinosaurimage.png');
+ //     loadDino = false
+      
+ //   }
+ //   translate(x,y);
+ //   image(dinogreen, vocal, 0);
+ //   loadDino = false
+ // }   
+
     meteorgetsbigger();
     drawground();
     drawdrummer(175, 175);
     drawmusician(-50,50);
     drawcrowd(200, 500);
+  //  drawgreendino(100,100);
 //    drawmeteor(900,60);
     
     
@@ -153,12 +163,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       
 //    }
 
-//    if(loadDino){ // LOAD THE DINOSAUR IMAGE _____________________________________________________________________________________________________________________________________________________
-//      testImg = loadImage('dinosaurimage.png');
-      
-//     loadDino = false
-      
-//    }
+ 
      //need this to make the images appear otherwise images don't appear
 //    image(testImg, 100, drum+1000)// if it is just a number then move it sideways or up and down depending on that number
 
