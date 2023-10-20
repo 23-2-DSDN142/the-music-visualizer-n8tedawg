@@ -1,164 +1,136 @@
-let firstRun = true
+// For the bassist
+let shadescaveman = true
+let themusician = [];
 
+// For the Dinosaur Crowd
 let dinosaurcrowd = true
+
+// For the adjusting of the coded trees
 let treesway = true
 
-let changethis = true
+// For the drummer
+let orangecaveman = true
 let thedrummer = [];
-let thetree = [];
 
-let loadDino = true
-let loadMeteor = true
-let themusician = [];
+
+
+// For the Ground
 let topsquarex = -10
 let topsquarey = 575
 let bottomsquarex = 1200
 let bottomsquarey = 750
+
+// For the Meteor in the background
+let flamingmeteor = true
+
+
+
 let img;
 let themeteor;
 
-let runFirst = true
+
 
 let thedinosrun = true
 
 let runX = 5700
 let runY = 300
 
-let ray1 = 635
-let ray2 = 75
+let treeleafX = 500
+let treeleafY = 300
 
-
-// THE WIDTH IS 1000-----------------------------------------------------------------------------------------------------------------
-// THE HEIGHT IS 750-----------------------------------------------------------------------------------------------------------------
-
-// vocal, drum, bass, and other are volumes ranging from 0 to 100
-
-// THIS IS WHERE YOU CAN CREATE ADD ANYTHING TO MAKE THE MUSIC VISUALISER. YOU CAN OMMIT THIS OUT AND START NEW AND FRESH
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-
-  //let meteorSize = map(vocal, 0, 100, 0, 300) // relation of the size last number
-  let meteorgettingclose = map(song.currentTime(), 0, song.duration(), -1000, 2000); // Map that allows the meteor to come in during the duration of the song
+  
+  let meteorgettingclose = map(song.currentTime(), 0, song.duration(), 0, 700); // Map that allows the meteor to come in during the duration of the song
   let dinosaurvibing = map(vocal, 0, 100, 0, -600); // Map that allows the dinosaurs to be proportionate to the 'vocals' variable
-  let treejump = map(other, 0, 100, 0, 600); // Map that allows the trees to be proportionate to the 'other' variable
-  let sunjump = map(other, 0, 100, 0, 200); // Map that allows the sun to be proportionate to 'other' variable
-  let rayjump = map(other, 0, 100, 0, 30); // Map that allows the rays to be proportionate to 'other variable
+  let treejump = map(other, 0, 100, 0, 200); // Map that allows the trees to be proportionate to the 'others' variable
+  let sunjump = map(other, 0, 100, 0, 200); // Map that allows the sun to be proportionate to 'others' variable
 
-  background(255, 228, 153) // Yellow tan sky colour
   background(125, 189, 229) // Sky blue colour
 
-  ellipse (645, 200, sunjump, sunjump); // The sun
+  fill(245, 194, 66)
+  ellipse (645, 200, sunjump, sunjump); // The sun in the background
 
-  
-  function drawground(){ // This draws the ground for the musicians to stand on
-  fill(217, 183, 91); //  the flooring colour
+  function drawground(){ // This function draws the ground for the musicians to stand on
+  fill(217, 183, 91); // The flooring colour
   strokeWeight(6);
-  rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey) // the flooring
+  rect(topsquarex, topsquarey, bottomsquarex, bottomsquarey) // The flooring itself
   }
 
   console.log(song.currentTime());
 
-//  function drawmeteor(x,y){ // this draws the meteor
-//    if(runFirst){
-//      asteroid = loadImage('meteorfire.png');
-//      runFirst = false
-//    }
-//    translate(x,y);
-//    image(asteroid, 0, 0, -meteorSize, meteorSize+30);
-//    runFirst = false
-//  }
-
-  function drawcrowd(x,y){ // draws the dinosaur crowd
+  function drawcrowd(x,y){ // This function draws the dinosaur crowd
     if(dinosaurcrowd){
-      faceleftdinosaur = loadImage('shadowdinosaurleft.png');
-      facerightdinosaur = loadImage('shadowdinosaurright.png');
+      faceleftdinosaur = loadImage('shadowdinofacingleft.png');
+      facerightdinosaur = loadImage('shadowdinofacingright.png');
       dinosaurcrowd = false
-
     }
   
     translate(x,y);
     scale(0.2);
-    image(faceleftdinosaur, 3000, dinosaurvibing) // the dinosaur on the very far right
-    image(facerightdinosaur, -1400, dinosaurvibing) // the dinosaur on the very left
-    image(faceleftdinosaur, 1500, dinosaurvibing+200) // the dinosaur in the middle on the right
-    image(facerightdinosaur, -550, dinosaurvibing+400)
-
+    image(faceleftdinosaur, 3000, dinosaurvibing) // The dinosaur on the very far right
+    image(facerightdinosaur, -1400, dinosaurvibing) // The dinosaur on the very left
+    image(faceleftdinosaur, 1500, dinosaurvibing+200) // The dinosaur in the middle on the right
+    image(facerightdinosaur, -550, dinosaurvibing+400) // The dinosaur in the middle on the left
   }
 
-  function codedtree(){ // Draws the Coded trees
+  function drawcodedtree(treeleafX, treeleafY){ // This function draws the coded trees 
     strokeWeight(6)
-    fill(190, 130, 59)
-    quad (450, 700, 475, 305, 525, 305, 550, 700)
-
+    fill(190, 130, 59) // The brown trunk of the tree
+    quad (treeleafX-50, treeleafY+400, treeleafX-25, treeleafY+5, treeleafX+25, treeleafY+5, treeleafX+50, treeleafY+400)
 
     strokeWeight(6)
-    fill(135, 168, 62) // Left Leaf of the Tree
+    fill(135, 168, 62) // Bottom Left Leaf of the tree
     beginShape();
-    vertex(500, 300)
-    bezierVertex(400, 320, 350, 320, 400, 400);
+    vertex(treeleafX, treeleafY)
+    bezierVertex(treeleafX-100, treeleafY+20, treeleafX-150, treeleafY+20, treeleafX-100, treeleafY+100);
     endShape();
 
     strokeWeight(6)
-    line(400, 400, 500, 300)
+    line(treeleafX-100, treeleafY+100, treeleafX, treeleafY)
 
-    strokeWeight(6) // Right Leaf of the tree
+    strokeWeight(6) // Bottom Right Leaf of the tree
     fill(135, 168, 62)
     beginShape();
-    vertex(500, 300)
-    bezierVertex(600, 320, 650, 320, 600, 400);
+    vertex(treeleafX, treeleafY)
+    bezierVertex(treeleafX+100, treeleafY+20, treeleafX+150, treeleafY+20, treeleafX+100, treeleafY+100);
     endShape();
 
     strokeWeight(6)
-    line(600, 400, 500, 300)
+    line(treeleafX+100, treeleafY+100, treeleafX, treeleafY)
 
-    strokeWeight(6) // Top left Leaf of the tree
+    strokeWeight(6) // Top Left Leaf of the tree
     fill(135, 168, 62)
     beginShape();
-    vertex(500, 300)
-    bezierVertex(400, 220, 350, 220, 350, 300);
+    vertex(treeleafX, treeleafY)
+    bezierVertex(treeleafX-100, treeleafY-80, treeleafX-150, treeleafY-80, treeleafX-150, treeleafY);
     endShape();
 
     strokeWeight(6)
-    line(350, 300, 500, 300)
+    line(treeleafX-150, treeleafY, treeleafX, treeleafY)
 
-    strokeWeight(6) // Top right Leaf of the tree
+    strokeWeight(6) // Top Right Leaf of the tree
     fill(135, 168, 62)
     beginShape();
-    vertex(500, 300)
-    bezierVertex(600, 220, 650, 220, 650, 300);
+    vertex(treeleafX, treeleafY)
+    bezierVertex(treeleafX+100, treeleafY-80, treeleafX+150, treeleafY-80, treeleafX+150, treeleafY);
     endShape();
 
     strokeWeight(6)
-    line(650, 300, 500, 300)
-}
-
-  function drawtrees(x,y){ // Draws the trees which is proportionate to the 'other' variable
-    if (treesway){
-     sidetree = loadImage('tree.png');
-     treesway = false
-  
-    }
-    push()
-    scale(0.2);
-    translate(x,y);
-    image(sidetree, -700, treejump+150) // left side tree
-    image(sidetree, 3200, treejump+150) // right side tree
-    pop();
-
+    line(treeleafX+150, treeleafY, treeleafX, treeleafY)
   }
 
-  function meteorgetsbigger(x,y){ // this draws the meteor (without the flames) getting closer to the caveman
-    if(runFirst){
-      asteroid = loadImage('meteor.png');
-      runFirst = false
+  function meteorgetsbigger(x,y){ // This function draws the meteor coming closer in the background 
+    if(flamingmeteor){
+      rockchunk = loadImage('meteor.png');
+      flamingmeteor = false
     }
     translate(x,y);
-    image(asteroid, 0, 0, meteorgettingclose+10, meteorgettingclose);
-    runFirst = false
-
+    image(rockchunk, 0, 0, meteorgettingclose+10, meteorgettingclose);
+    flamingmeteor = false
   }
 
-  function drawdrummer(x,y){ // this draws the drummer
-    if (changethis){
+  function drawdrummer(x,y){ // This function draws the drummer
+    if (orangecaveman){
       thedrummer.push(loadImage('thedrummer/thedrummer_0.png'));
       thedrummer.push(loadImage('thedrummer/thedrummer_1.png'));
       thedrummer.push(loadImage('thedrummer/thedrummer_2.png'));
@@ -166,20 +138,20 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       thedrummer.push(loadImage('thedrummer/thedrummer_4.png'));
       thedrummer.push(loadImage('thedrummer/thedrummer_5.png'));
   
-      changethis = false
+      orangecaveman = false
     }
   
     let drummingpart = int(map(drum, 0, 100, 0, 6));
     push();
     translate(x,y)
     scale(0.2);
-    image(thedrummer[drummingpart],0,0) // (the drummer, how much he moves x-axis, how much he moves y-axis)
+    image(thedrummer[drummingpart],0,0)
     pop();
   
   }
   
-  function drawmusician(x,y){ // this draws the bassist
-    if (firstRun){
+  function drawbassist(x,y){ // This function draws the bassist
+    if (shadescaveman){
       themusician.push(loadImage('themusician/themusician_0.png'));
       themusician.push(loadImage('themusician/themusician_1.png'));
       themusician.push(loadImage('themusician/themusician_2.png'));
@@ -187,64 +159,42 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       themusician.push(loadImage('themusician/themusician_4.png'));
       themusician.push(loadImage('themusician/themusician_5.png'));
   
-      firstRun = false
+      shadescaveman = false
     }
   
     let VocalFrame = int(map(bass, 0, 100, 0, 6));
     push();
     translate(x,y)
     scale(0.2);
-    image(themusician[VocalFrame],0,0) // (the musician, how much he moves x-axis, how much he moves y-axis)
+    image(themusician[VocalFrame],0,0)
     pop();
   }
 
-//  function dinosrunning(x,y){ // this draws the small dinosaurs running in the background
-
-//    if(song.currentTime()>4 && song.currentTime()<7){
-//       if (thedinosrun){
-//        greenbabies = loadImage('dinosaurimage.png')
-//        thedinosrun = false
-//       }
-//       translate(x,y)
-//       scale(0.5)
-//       image(greenbabies, 0,0);
-       
-//       thedinosrun = false
-      
-//    }
-
-//  }
-
- // function drawgreendino(x,y){
- //   if(loadDino){ // LOAD THE DINOSAUR IMAGE _____________________________________________________________________________________________________________________________________________________
- //     dinogreen = loadImage('dinosaurimage.png');
- //     loadDino = false
-      
- //   }
- //   translate(x,y);
- //   image(dinogreen, vocal, 0);
- //   loadDino = false
- // }   
-
+ if(treesway){ // This code allows me to adjust the placement of the coded trees
+  drawcodedtree(treeleafX-350, treejump+100)
+  drawcodedtree(treeleafX+350, treejump+100)
+ }
+   
     meteorgetsbigger();
-  //  drawtrees(); 
-    codedtree(200, 200, 200, treejump);
-    drawground();
-    
-  //  drawdrummer(300, 175);
-    drawmusician(100,50);
+    drawground(); 
+    drawdrummer(300, 175);
+    drawbassist(100,50);
     drawcrowd(200, 500);
     
+    if(song.currentTime()<1 || song.currentTime()>281){ // This function is just to add a black screen at the start and end of the music visualiser.
+      push()
+      fill(0)
+      rect(-1000,-2500,5000,3800);
+      pop()
 
-//    dinosrunning(runX, runY);
-//    runX = runX-15
-    //runX = runX - 5
-  //  drawgreendino(100,100);
-//    drawmeteor(900,60);
-    
-    
-    
     }
+
+      }
+
+    
+    
+    
+  
     
 //   if(song.currentTime()>5 && song.currentTime()<7){ // Spawn and Disappear Meteor
       //fill(252,252,252);
